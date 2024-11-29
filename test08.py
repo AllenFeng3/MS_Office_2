@@ -122,3 +122,15 @@ soup = BeautifulSoup(html_doc, 'html.parser')
 # print(type(soup.div)) # <class 'bs4.element.Tag'>
 print(soup.a)
 print(soup.find_all("a"))
+for single_a in soup.find_all("a"):
+    print(single_a.get("href"))
+    print(single_a.get("class"))
+    print(single_a.get("id"))
+print(soup.find(id="coltabid"))
+# sp = BeautifulSoup("Sacr&eacute; bleu!", "html.parser")
+# print(sp.get_text())
+# print(sp)
+sp = BeautifulSoup('<b class="boldest">Extremely bold</b>', "html.parser")
+tag = soup.b
+print(tag)
+print(type(tag))
