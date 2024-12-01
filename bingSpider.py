@@ -26,7 +26,8 @@ def fetch_word_html(word):
         word (str): 要搜索的关键词。
     """
     # 构造 URL
-    url = f"https://www.bing.com/dict/search?q={word}&FORM=BDVSP6&cc=cn"
+    # url = f"https://www.bing.com/dict/search?q={word}&FORM=BDVSP6&cc=cn"
+    url = f"https://www.bing.com/dict/search?q={word}&go=%E6%90%9C%E7%B4%A2&qs=ds&form=Z9LH5"
 
     # 设置请求头
     headers = {
@@ -40,7 +41,7 @@ def fetch_word_html(word):
         # 检查响应状态码
         if response.status_code == 200:
             # 保存 HTML 内容到文件
-            filename = f"docs/htmlDocs/{word}.html"
+            filename = f"docs/toefl_sat_ielts_gre_gmat_bec_words/{word}.html"
             with open(filename, "w", encoding="utf-8") as file:
                 file.write(response.text)
             print(f"页面已成功保存为 {filename}")
@@ -63,7 +64,7 @@ def save_to_csv(word):
         word (str): 无法爬取的关键词。
     """
     try:
-        with open("cannotfind.csv", mode="a", newline="", encoding="utf-8") as file:
+        with open("docs/csvDocs/0_notfound.csv", mode="a", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
             writer.writerow([word])
         print(f"关键词 {word} 已保存到 cannotfind.csv")
@@ -72,9 +73,10 @@ def save_to_csv(word):
 
 
 def main():
-    filepath = "docs/csvDocs/cet46officialwords.csv"
+    filepath = "docs/csvDocs/0_cet46_not_include.csv"
     dict_words = read_csv_to_dict(filepath)
     for word in dict_words:
+        # print(type(word))
         fetch_word_html(word)
 
 
