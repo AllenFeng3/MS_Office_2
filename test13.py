@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS court_cases (
 cursor.execute(create_table_query)
 
 # 定义文件夹路径
-source_folder = "page2"  # 原始文件夹路径
+source_folder = "page1"  # 原始文件夹路径
 processed_folder = "0HYD/doneDocs"  # 已处理文件夹路径
 
 # 确保目标文件夹存在
